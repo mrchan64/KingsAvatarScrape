@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="matthew">
+    <link rel="icon" href="assets/img/favicon-2.ico">
+
+    <title>The King's Avatar Scrape</title>
+  </head>
+  <body>
+    Request data from episode <input id="start"> to <input id="end">. <button onclick="submit()">Submit</button> If download doesn't start, wait 15 seconds and try again.
+    <iframe id="my_iframe" style="display:none;"></iframe>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+    function submit(){
+      var start = $('#start').val();
+      var end = $('#end').val();
+      $('#my_iframe').get(0).src = '/audio?start='+start+'&end='+end;
+    }
+    </script>
+  </body>
+</html>
