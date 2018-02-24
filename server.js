@@ -18,10 +18,17 @@ app.get('/audio', (req, res)=>{
     res.send('not loaded');
     return;
   }
+
+  var start = parseInt(req.query.start)-1;
+  var end = parseInt(req.query.end)-1;
+  if(0<=start && 0<=end && start<=end){
+    res.send('invalid');
+    return;
+  }
   res.set('Content-Type', 'application/zip');
   res.set('Content-Disposition', 'attachment; filename=audioDownload.zip');
-  console.log('Piping zip from '+req.query.start+" to " +req.query.end);
-  scrape.scrape(parseInt(req.query.start),parseInt(req.query.end)).pipe(res);
+  console.log('Piping zip from '+start+" to " +end);
+  scrape.scrape(start,end).pipe(res);
 })
 
 var server = http.createServer(app);
