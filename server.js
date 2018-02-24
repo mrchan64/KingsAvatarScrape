@@ -21,7 +21,7 @@ app.get('/audio', (req, res)=>{
 
   var start = parseInt(req.query.start)-1;
   var end = parseInt(req.query.end)-1;
-  if(0<=start && 0<=end && start<=end){
+  if(0>start || 0>end || start>end){
     res.send('invalid');
     return;
   }
